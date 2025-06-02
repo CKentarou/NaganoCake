@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - '3000:3000'
+    # ステップ2で追記、database.ymlで参照するため
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+    volumes:
+      - type: bind
+        source: ./service
+        target: /service
+    # ステップ2で追記、dbサービスと依存関係があり指定
+    depends_on:
+      - db
+
+  # ステップ2で追記、MySQLのイメージを使用
+  db:
+    image: mysql:8.3
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - '3306:3306'
+    volumes:
+      - type: bind
+        source: ./db_data
+        target: /var/lib/mysql
