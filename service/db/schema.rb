@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_06_05_005206) do
+ActiveRecord::Schema.define(version: 2025_06_05_005608) do
 
   create_table "addresses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -81,8 +81,23 @@ ActiveRecord::Schema.define(version: 2025_06_05_005206) do
     t.index ["genre_id"], name: "index_items_on_genre_id"
   end
 
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "shipping_postal_code", null: false
+    t.string "shipping_address", null: false
+    t.string "shipping_name", null: false
+    t.integer "shipping_fee", null: false
+    t.integer "billing_amount", null: false
+    t.integer "payment_method", null: false
+    t.integer "order_status", default: 0, null: false
+    t.bigint "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+  end
+
   add_foreign_key "addresses", "customers"
   add_foreign_key "cart_items", "customers"
   add_foreign_key "cart_items", "items"
   add_foreign_key "items", "genres"
+  add_foreign_key "orders", "customers"
 end
