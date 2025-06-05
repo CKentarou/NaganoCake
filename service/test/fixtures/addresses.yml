@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rails: MyString
+  g: MyString
+  model: MyString
+  address: MyString
+  postal_code: MyString
+  address: MyString
+  recipient_name: MyString
+  customer: one
+
+two:
+  rails: MyString
+  g: MyString
+  model: MyString
+  address: MyString
+  postal_code: MyString
+  address: MyString
+  recipient_name: MyString
+  customer: two
