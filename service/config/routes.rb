@@ -12,10 +12,12 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
-  namespace :public do
+  scope module: :public do
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   end
 end
