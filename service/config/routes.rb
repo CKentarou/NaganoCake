@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
   }
 
-  root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
   scope module: :public do
+    root to: 'homes#top'
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
     get 'customers/unsubscribe' => 'customers#unsubscribe'
@@ -20,5 +20,9 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/thanks' => 'orders#thanks'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  end
+
+  namespace :admin do
+    root to: 'homes#top'
   end
 end
