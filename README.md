@@ -7,6 +7,15 @@
 docker-compose build
 ```
 
+### DBの作成
+初回実行時は以下のコマンドを実行してください。
+
+```bash
+docker-compose exec naganocake-web-1 bundle exec rails db:create
+docker-compose exec naganocake-web-1 bundle exec rails db:migrate
+docker-compose exec naganocake-web-1 bundle exec rails db:seed
+```
+
 ### コンテナの起動
 以下のコマンドでコンテナを起動します。
 
