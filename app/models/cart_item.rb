@@ -1,2 +1,4 @@
 class CartItem < ApplicationRecord
-end
+    belongs_to :customer
+    belongs_to :item
+end 
