@@ -1,7 +1,7 @@
-class Admin::CustomersController < Admin::BaseController
-  def index
+class Admin::OrdersController < Admin::BaseController
+  def show
   end
 
-  def show
+  def update
   end
 end

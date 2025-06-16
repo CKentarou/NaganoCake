@@ -1,4 +1,16 @@
-class Public::AddressesController < Public::BaseController
+class Public::CartItemsController < Public::BaseController
   def index
+  end
+
+  def update 
+  end
+
+  def destroy
+  end
+
+  def destroy_all
+  end
+
+  def create
   end
 end
