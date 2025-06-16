@@ -25,6 +25,10 @@
             <%= link_to admin_root_path, class: "navbar-brand fw-bold" do %>
               <span class="text-dark">Nagano</span><span class="text-primary">Cake</span>
             <% end %>
+          <% else %>
+            <%= link_to root_path, class: "navbar-brand fw-bold" do %>
+              <span class="text-dark">Nagano</span><span class="text-primary">Cake</span>
+            <% end %>
           <% end %>
           
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

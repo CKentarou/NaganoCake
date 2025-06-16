@@ -8,15 +8,26 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def new
-    
+    @item = Item.new
   end
 
   def edit
   end
 
   def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to admin_item_path(@item)
+    else
+      render :new
+    end
   end
 
   def update
   end
+end
+
+private
+def item_params
+  params.require(:item).permit(:name, :description, :price_excluding_tax, :sales_status, :genre_id, :image)
 end
