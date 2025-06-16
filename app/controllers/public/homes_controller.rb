@@ -1,4 +1,4 @@
-class Public::HomesController < ApplicationController
+class Public::AddressesController < Public::BaseController
   def top
   end
 
