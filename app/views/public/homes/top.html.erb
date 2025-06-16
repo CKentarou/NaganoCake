@@ -1,2 +1,56 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container-fluid m-5">
+  <div class="row mx-5">
+    <div class="col-md-2">
+      <div class="list-group list-group-flush">
+        <div class="list-group-item bg-light text-center">
+          <h4 class="mb-0 fw-bold">ジャンル検索</h4>
+        </div>
+        <% if @genres.present? %>
+          <% @genres.each do |genre| %>
+            <li class="list-group-item text-center"><%= genre.name %></li>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="row mb-5">
+        <div class="col-md-8 mx-auto">
+          <div class="card shadow-sm">
+            <div class="card-body text-center p-4">
+              <h3 class="card-title mb-4">ようこそ、ながのCAKEへ!</h3>
+              <p class="card-text">
+                このサイトは、ケーキ販売のECサイトになります。<br>
+                会員でない方も商品の閲覧はできますが、<br>
+                購入には会員登録が必要になります。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <h2 class="position-relative">
+          新着商品
+        </h2>
+      </div>
+
+      <% if @items.present? %>
+        <div class="row g-4 me-5">
+          <% @items.each do |item| %>
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title text-truncate"><%= item.name %></h5>
+                  <p class="card-text text-end">¥<%= number_with_delimiter(item.price_excluding_tax) %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="d-flex justify-content-end me-5">
+        <%= link_to "全ての商品を見る", items_path, class: "btn btn-primary mt-5" %>
+      </div>
+    </div>
+  </div>
+</div>
