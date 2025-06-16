@@ -39,10 +39,15 @@
           <% @items.each do |item| %>
             <div class="col-md-3">
               <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                  <h5 class="card-title text-truncate"><%= item.name %></h5>
-                  <p class="card-text text-end">¥<%= number_with_delimiter(item.price_excluding_tax) %></p>
-                </div>
+                <%= link_to item_path(item) do %>
+                  <div class="card-img-top" style="height: 200px; overflow: hidden;">
+                    <%= image_tag item.image, class: "img-fluid w-100 h-100 object-fit-cover" %>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title text-truncate"><%= item.name %></h5>
+                    <p class="card-text text-end">¥<%= number_with_delimiter(item.price_excluding_tax) %></p>
+                  </div>
+                <% end %>
               </div>
             </div>
           <% end %>
