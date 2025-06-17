@@ -41,7 +41,7 @@
               <div class="card h-100 shadow-sm">
                 <%= link_to item_path(item) do %>
                   <div class="card-img-top" style="height: 200px; overflow: hidden;">
-                    <%= image_tag item.image, class: "img-fluid w-100 h-100 object-fit-cover" %>
+                    <%= image_tag item.get_image(size: "200x200"), class: "img-fluid w-100 h-100 object-fit-cover" %>
                   </div>
                   <div class="card-body">
                     <h5 class="card-title text-truncate"><%= item.name %></h5>

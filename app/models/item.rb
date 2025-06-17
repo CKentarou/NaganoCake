@@ -6,4 +6,13 @@ class Item < ApplicationRecord
     has_one_attached :image
   
     enum sales_status: { 販売中: true, 販売停止中: false }
+
+
+    def get_image(size: nil)
+        unless image.attached?
+            file_path = Rails.root.join('app/assets/images/no_image.jpg')
+            image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+        end
+        size ? image.variant(resize: size).processed : image
+    end
 end 
