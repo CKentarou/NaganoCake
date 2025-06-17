@@ -1,7 +1,14 @@
-<div class="container">
+<div class="container mt-4">
+  <div class="row mb-4">
+    <div class="col-auto">
+      <h2 class="fw-bold">
+        <i class="fas fa-list me-2"></i>商品詳細
+      </h2>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-4">
-      <%= image_tag @item.image, class: "img-fluid w-100 h-100 object-fit-cover" %>
+      <%= image_tag @item.get_image(size: "800x800"), class: "img-fluid" %>
     </div>
     
     <div class="col-md-8">
@@ -21,7 +28,7 @@
         <tr>
           <th>税込価格<br>(税抜価格)</th>
           <td>
-            <%= number_to_currency(@item.price_excluding_tax, unit: "¥", strip_insignificant_zeros: true) %>
+            <%= number_to_currency(@item.price_excluding_tax * 1.1, unit: "¥", strip_insignificant_zeros: true) %>
             (<%= number_to_currency(@item.price_excluding_tax, unit: "¥", strip_insignificant_zeros: true) %>)
           </td>
         </tr>
