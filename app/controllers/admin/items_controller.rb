@@ -5,6 +5,7 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def new
@@ -12,6 +13,7 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def create
