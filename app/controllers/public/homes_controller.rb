@@ -1,6 +1,6 @@
 class Public::HomesController < Public::BaseController
   def top
-    @items = Item.all.order(created_at: :desc).limit(4)
+    @items = Item.includes(image_attachment: :blob).all.order(created_at: :desc).limit(4)
     @genres = Genre.all
   end
 
