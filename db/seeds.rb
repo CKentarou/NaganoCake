@@ -10,9 +10,39 @@ Admin.create!(
   password: 'password'
 )
 
-Genre.create!(
-  name: "ケーキ"
-)
+# ジャンルの作成
+genres = [
+  "ケーキ",
+  "クッキー",
+  "パン",
+  "和菓子",
+  "チョコレート",
+  "アイスクリーム",
+  "タルト",
+  "プリン",
+  "マカロン",
+  "ドーナツ"
+]
+
+genres.each do |genre_name|
+  Genre.create!(name: genre_name)
+end
+
+# ユーザーの作成
+10.times do |n|
+  Customer.create!(
+    email: "user#{n + 1}@example.com",
+    password: "password",
+    last_name: "姓#{n + 1}",
+    first_name: "名#{n + 1}",
+    last_name_kana: "セイ#{n + 1}",
+    first_name_kana: "メイ#{n + 1}",
+    postal_code: "1234567",
+    address: "東京都渋谷区#{n + 1}丁目",
+    phone_number: "09012345678",
+    membership_status: true
+  )
+end
 
 # バナナケーキ
 Item.create!(
@@ -53,12 +83,12 @@ Item.create!(
   )
 )
 
-# マカロンケーキ
+# マカロン
 Item.create!(
-  name: "マカロンケーキ",
+  name: "マカロン",
   description: "カラフルなマカロンを贅沢に使用した、おしゃれなケーキです。",
   price_excluding_tax: 2000,
-  genre_id: 1,
+  genre_id: 9,
   sales_status: true,
   image: ActiveStorage::Blob.create_and_upload!(
     io: File.open(Rails.root.join('app/assets/images/makaroncake.jpg')),
