@@ -5,7 +5,7 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.includes(image_attachment: :blob).find(params[:id])
   end
 
   def new
