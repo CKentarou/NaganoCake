@@ -37,15 +37,13 @@
       <% if @items.present? %>
         <div class="row g-4 me-5">
           <% @items.each do |item| %>
-            <div class="col-md-3">
-              <div class="card h-100 shadow-sm">
-                <%= link_to item_path(item) do %>
-                  <div class="card-img-top" style="height: 200px; overflow: hidden;">
-                    <%= image_tag item.get_image(size: "200x200"), class: "img-fluid w-100 h-100 object-fit-cover" %>
-                  </div>
+            <div class="col">
+              <div class="card h-100">
+                <%= link_to item_path(item), class: "text-dark text-decoration-none" do %>
+                  <%= image_tag item.get_image(size: "800x800"), class: "card-img-top", style: "height: 150px; object-fit: cover;" %>
                   <div class="card-body">
-                    <h5 class="card-title text-truncate"><%= item.name %></h5>
-                    <p class="card-text text-end">¥<%= number_with_delimiter(item.price_excluding_tax) %></p>
+                    <h5 class="card-title"><%= item.name %></h5>
+                    <p class="card-text">¥<%= item.price_excluding_tax.to_s(:delimited) %></p>
                   </div>
                 <% end %>
               </div>
