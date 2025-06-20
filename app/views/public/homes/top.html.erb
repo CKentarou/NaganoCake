@@ -37,17 +37,19 @@
       <% if @items.present? %>
         <div class="row g-4 me-5">
           <% @items.each do |item| %>
-            <div class="col">
-              <div class="card h-100">
-                <%= link_to item_path(item), class: "text-dark text-decoration-none" do %>
-                  <%= image_tag item.get_image(size: "800x800"), class: "card-img-top", style: "height: 150px; object-fit: cover;" %>
-                  <div class="card-body">
-                    <h5 class="card-title"><%= item.name %></h5>
-                    <p class="card-text">¥<%= item.price_excluding_tax.to_s(:delimited) %></p>
-                  </div>
-                <% end %>
+            <% if item.sales_status == "販売中" %>
+              <div class="col-3">
+                <div class="card h-100">
+                  <%= link_to item_path(item), class: "text-dark text-decoration-none" do %>
+                    <%= image_tag item.get_image(size: "800x800"), class: "card-img-top", style: "height: 150px; object-fit: cover;" %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= item.name %></h5>
+                      <p class="card-text">¥<%= item.price_excluding_tax.to_s(:delimited) %></p>
+                    </div>
+                  <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
       <% end %>
