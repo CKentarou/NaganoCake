@@ -1,14 +1,23 @@
 class Public::CartItemsController < Public::BaseController
   def index
+    @cart_items = CartItem.where(customer_id: current_customer.id)
   end
 
   def update 
+    cart_item = CartItem.find(params[:id])
+    cart_item.update(cart_item_params)
+    redirect_to cart_items_path
   end
 
   def destroy
+    cart_item = CartItem.find(params[:id])
+    cart_item.destroy
+    redirect_to cart_items_path
   end
 
   def destroy_all
+    CartItem.where(customer_id: current_customer.id).destroy_all
+    redirect_to cart_items_path
   end
 
   def create
