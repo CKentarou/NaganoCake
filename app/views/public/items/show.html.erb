@@ -28,7 +28,7 @@
             <div class="d-flex align-items-end gap-3 mb-4">
               <div class="form-group">
                 <%= f.label :amount, "個数選択" %>
-                <%= f.select :amount, *[1..10], {}, class: "form-control" %>
+                <%= f.number_field :amount, value: 1, min: 1, max: 10, class: "form-control" %>
               </div>
               <%= f.submit "カートに入れる", class: "btn btn-success" %>
             </div>
