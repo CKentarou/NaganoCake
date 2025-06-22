@@ -15,4 +15,8 @@ class Item < ApplicationRecord
         end
         size ? image.variant(resize: size).processed : image
     end
+
+    def with_tax_price
+        (price_excluding_tax * 1.1).floor
+    end
 end 
