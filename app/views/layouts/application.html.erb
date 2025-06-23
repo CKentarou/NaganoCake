@@ -90,6 +90,20 @@
       </nav>
     </header>
 
+    <% if notice %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 76px;">
+        <%= notice %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+    
+    <% if alert %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 76px;">
+        <%= alert %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+
     <!-- メインコンテンツ用のパディング -->
     <div style="padding-top: 76px;">
       <%= yield %>
