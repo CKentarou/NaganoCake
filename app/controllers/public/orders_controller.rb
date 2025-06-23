@@ -4,6 +4,21 @@ class Public::OrdersController < Public::BaseController
   end
 
   def create
+    order = Order.new(order_params)
+    order.customer_id = current_customer.id
+    if order.save
+      current_customer.cart_items.each do |cart_item|
+        OrderDetail.create(order_id: order.id, item_id: cart_item.item_id, quantity: cart_item.amount, purchase_price: cart_item.item.with_tax_price)
+      end
+
+      current_customer.cart_items.destroy_all
+
+      redirect_to orders_thanks_path
+    else
+      # デバッグ用：エラーをログに出力
+      Rails.logger.error "Order save failed: #{order.errors.full_messages}"
+      redirect_to new_order_path, alert: "注文の作成に失敗しました"
+    end
   end
 
   def index
@@ -41,6 +56,6 @@ class Public::OrdersController < Public::BaseController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :address_option, :registered_address_id, :new_postal_code, :new_address, :new_name)
+    params.require(:order).permit(:payment_method, :address_option, :registered_address_id, :new_postal_code, :new_address, :new_name, :shipping_postal_code, :shipping_address, :shipping_name, :shipping_fee, :billing_amount)
   end
 end
