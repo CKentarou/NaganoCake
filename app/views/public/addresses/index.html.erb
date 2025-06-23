@@ -1,2 +1,65 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="mb-4">配送先登録 / 一覧</h2>
+
+      <!-- 登録フォーム -->
+      <h4 class="mb-3">新規登録</h4>
+      <%= form_with model: @address, local: true do |f| %>
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <%= f.label :postal_code, "郵便番号", class: "form-label" %>
+            <%= f.text_field :postal_code, class: "form-control", placeholder: "0000000" %>
+          </div>
+          <div class="col-md-9">
+            <%= f.label :address, "住所", class: "form-label" %>
+            <%= f.text_field :address, class: "form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
+          </div>
+        </div>
+        <div class="mb-3">
+          <%= f.label :recipient_name, "宛名", class: "form-label" %>
+          <%= f.text_field :recipient_name, class: "form-control", placeholder: "山田太郎" %>
+        </div>
+        <div class="text-end">
+          <%= f.submit "登録する", class: "btn btn-success" %>
+        </div>
+      <% end %>
+
+      <hr class="my-5">
+
+      <!-- 住所一覧 -->
+      <h4 class="mb-3">登録済み住所一覧</h4>
+      <% if @addresses.any? %>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover align-middle">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">郵便番号</th>
+                <th scope="col">住所</th>
+                <th scope="col">宛名</th>
+                <th scope="col" style="width: 180px;">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @addresses.each do |address| %>
+                <tr>
+                  <td><%= address.postal_code %></td>
+                  <td><%= address.address %></td>
+                  <td><%= address.recipient_name %></td>
+                  <td>
+                    <div class="d-flex">
+                      <%= link_to "編集", edit_address_path(address), class: "btn btn-primary btn-sm me-1" %>
+                      <%= button_to "削除", address_path(address), method: :delete, class: "btn btn-danger btn-sm" %>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% else %>
+        <p class="text-center text-muted">登録済みの住所はありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>
