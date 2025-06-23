@@ -1,5 +1,6 @@
 class Public::CustomersController < Public::BaseController
   def show
+    @customer = current_customer
   end
 
   def edit

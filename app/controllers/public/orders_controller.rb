@@ -22,6 +22,7 @@ class Public::OrdersController < Public::BaseController
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
