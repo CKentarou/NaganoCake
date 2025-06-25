@@ -3,9 +3,11 @@
     <div class="col-auto">
       <h2 class="fw-bold mb-4">カート内商品一覧</h2>
     </div>
-    <div class="col-auto ms-auto">
-      <%= button_to "カートを空にする", cart_items_destroy_all_path, class: "btn btn-danger", method: :delete, data: { confirm: "カート内の商品を全て削除しますか？" } %>
-    </div>
+    <% if @cart_items.present? %>
+      <div class="col-auto ms-auto">
+        <%= button_to "カートを空にする", cart_items_destroy_all_path, class: "btn btn-danger", method: :delete, data: { confirm: "カート内の商品を全て削除しますか？" } %>
+      </div>
+    <% end %>
   </div>
   <% if @cart_items.present? %>
     <table class="table table-bordered align-middle">
