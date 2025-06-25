@@ -1,4 +1,6 @@
 class Public::OrdersController < Public::BaseController
+  before_action :ensure_cart_items, only: [:new, :create]
+
   def new
     @order = Order.new
   end
@@ -59,5 +61,11 @@ class Public::OrdersController < Public::BaseController
 
   def order_params
     params.require(:order).permit(:payment_method, :address_option, :registered_address_id, :new_postal_code, :new_address, :new_name, :shipping_postal_code, :shipping_address, :shipping_name, :shipping_fee, :billing_amount)
+  end
+
+  def ensure_cart_items
+    unless current_customer.cart_items.any?
+      redirect_to cart_items_path, alert: "カートに商品がありません。"
+    end
   end
 end
