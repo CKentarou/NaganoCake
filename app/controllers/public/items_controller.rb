@@ -2,7 +2,7 @@ class Public::ItemsController < Public::BaseController
   skip_before_action :authenticate_customer!, only: [:index, :show]
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).per(8)
     @genres = Genre.all
   end
 
