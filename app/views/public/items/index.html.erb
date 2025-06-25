@@ -6,7 +6,13 @@
 
     <!-- 商品一覧 -->
     <div class="col-md-10">
-      <h2 class="fw-bold mb-4">商品一覧</h2>
+      <h2 class="fw-bold mb-4">
+        <% if @genre.present? %>
+          <%= @genre.name %> 一覧
+        <% else %>
+          商品一覧
+        <% end %>
+      </h2>
       <div class="row row-cols-1 row-cols-md-4 g-4">
         <% @items.each do |item| %>
           <% if item.sales_status == "販売中" %>

@@ -5,7 +5,9 @@
     </div>
     <% if genres.present? %>
       <% genres.each do |genre| %>
-        <li class="list-group-item text-center"><%= genre.name %></li>
+        <li class="list-group-item text-center">
+          <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-dark text-decoration-none" %>
+        </li>
       <% end %>
     <% end %>
   </div>
