@@ -6,7 +6,11 @@ class Admin::OrdersController < Admin::BaseController
 
   def update
     order = Order.find(params[:id])
-    order.update(order_params)
+    if order.update(order_params)
+      if order.order_status == "入金確認"
+        order.order_details.update(production_status: "制作待ち")
+      end
+    end
     redirect_to admin_order_path(order)
   end
 
