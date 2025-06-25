@@ -48,7 +48,7 @@ end
 Item.create!(
   name: "バナナケーキ",
   description: "バナナの甘さがたっぷり詰まった、ふわふわのケーキです。",
-  price_excluding_tax: 1200,
+  price_excluding_tax: 900,
   genre_id: 1,
   sales_status: true,
   image: ActiveStorage::Blob.create_and_upload!(
@@ -61,7 +61,7 @@ Item.create!(
 Item.create!(
   name: "チョコケーキ",
   description: "濃厚なチョコレートの風味が広がる、大人気のケーキです。",
-  price_excluding_tax: 1500,
+  price_excluding_tax: 750,
   genre_id: 1,
   sales_status: true,
   image: ActiveStorage::Blob.create_and_upload!(
@@ -74,7 +74,7 @@ Item.create!(
 Item.create!(
   name: "ストロベリーケーキ",
   description: "季節のいちごをたっぷり使用した、華やかなケーキです。",
-  price_excluding_tax: 1800,
+  price_excluding_tax: 800,
   genre_id: 1,
   sales_status: true,
   image: ActiveStorage::Blob.create_and_upload!(
@@ -87,11 +87,87 @@ Item.create!(
 Item.create!(
   name: "マカロン",
   description: "カラフルなマカロンを贅沢に使用した、おしゃれなケーキです。",
-  price_excluding_tax: 2000,
+  price_excluding_tax: 500,
   genre_id: 9,
   sales_status: true,
   image: ActiveStorage::Blob.create_and_upload!(
     io: File.open(Rails.root.join('app/assets/images/makaroncake.jpg')),
     filename: 'makaroncake.jpg'
+  )
+)
+
+#ドーナツ
+Item.create!(
+  name: "ドーナツ",
+  description: "美味しいドーナツです",
+  price_excluding_tax: 700,
+  genre_id: 10,
+  sales_status: true,
+  image: ActiveStorage::Blob.create_and_upload!(
+    io: File.open(Rails.root.join('app/assets/images/Gemini_Generated_Image_soxo0isoxo0isoxo.png')),
+    filename: 'Gemini_Generated_Image_soxo0isoxo0isoxo.png'
+  )
+)
+
+#チーズケーキ
+Item.create!(
+  name: "チーズケーキ",
+  description: "美味しいチーズケーキです",
+  price_excluding_tax: 850,
+  genre_id: 1,
+  sales_status: true,
+  image: ActiveStorage::Blob.create_and_upload!(
+    io: File.open(Rails.root.join('app/assets/images/cheezucake.webp')),
+    filename: 'cheezucake.webp'
+  )
+)
+
+#クッキー
+Item.create!(
+  name: "クッキー",
+  description: "美味しいクッキーです",
+  price_excluding_tax: 700,
+  genre_id: 2,
+  sales_status: true,
+  image: ActiveStorage::Blob.create_and_upload!(
+    io: File.open(Rails.root.join('app/assets/images/cockie.webp')),
+    filename: 'cockie.webp'
+  )
+)
+
+
+Item.create!(
+  name: "ホットケーキ",
+  description: "美味しいホットケーキです",
+  price_excluding_tax: 650,
+  genre_id: 1,
+  sales_status: true,
+  image: ActiveStorage::Blob.create_and_upload!(
+    io: File.open(Rails.root.join('app/assets/images/hotcake.webp')),
+    filename: 'hotcake.webp'
+  )
+)
+
+Item.create!(
+  name: "クロワッサン",
+  description: "美味しいクロワッサンです",
+  price_excluding_tax: 350,
+  genre_id: 3,
+  sales_status: true,
+  image: ActiveStorage::Blob.create_and_upload!(
+    io: File.open(Rails.root.join('app/assets/images/kurowassan.webp')),
+    filename: 'kurowassan.webp'
+  )
+)
+
+Item.create!(
+  name: "餅",
+  description: "美味しい餅です",
+  price_excluding_tax: 300,
+  genre_id: 4,
+  sales_status: true,
+  image: ActiveStorage::Blob.create_and_upload!(
+    io: File.open(Rails.root.join('app/assets/images/mochi.webp')),
+    filename: 'mochi.webp'
   )
 )
