@@ -39,7 +39,7 @@ class Public::OrdersController < Public::BaseController
     when "registered_address"
       @order.shipping_postal_code = current_customer.addresses.find(params[:order][:registered_address_id]).postal_code
       @order.shipping_address = current_customer.addresses.find(params[:order][:registered_address_id]).address
-      @order.shipping_name = current_customer.addresses.find(params[:order][:registered_address_id]).name
+      @order.shipping_name = current_customer.addresses.find(params[:order][:registered_address_id]).recipient_name
     when "new_address"
       @order.shipping_postal_code = params[:order][:new_postal_code]
       @order.shipping_address = params[:order][:new_address]
