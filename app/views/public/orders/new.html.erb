@@ -39,9 +39,9 @@
         <div class="ps-4 mb-3">
           <%= f.select :registered_address_id, 
               current_customer.addresses.map { |address| 
-                ["#{address.postal_code} #{address.address} #{address.recipient_name}", address.id] 
+                ["〒#{address.postal_code} #{address.address} #{address.recipient_name}", address.id] 
               }, 
-              { prompt: "住所を選択してください" }, 
+              { selected: current_customer.addresses.first&.id }, 
               class: "form-select" %>
         </div>
       <% end %>
