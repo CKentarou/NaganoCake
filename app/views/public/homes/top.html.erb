@@ -1,17 +1,7 @@
 <div class="container-fluid m-5">
   <div class="row mx-5">
-    <div class="col-md-2">
-      <div class="list-group list-group-flush">
-        <div class="list-group-item bg-light text-center">
-          <h4 class="mb-0 fw-bold">ジャンル検索</h4>
-        </div>
-        <% if @genres.present? %>
-          <% @genres.each do |genre| %>
-            <li class="list-group-item text-center"><%= genre.name %></li>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'layouts/genres', genres: @genres %>
+    
     <div class="col-md-10">
       <div class="row mb-5">
         <div class="col-md-8 mx-auto">
