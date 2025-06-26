@@ -57,7 +57,8 @@
   <div class="row">
     <div class="col d-flex justify-content-center gap-3">
       <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %>
-      <%= link_to "注文履歴一覧を見る", admin_order_path(@customer), class: "btn btn-primary" %>
+      <%# この顧客の注文履歴一覧を表示する %>
+      <%= link_to "注文履歴一覧を見る", admin_root_path(customer_id: @customer.id), class: "btn btn-primary" %>
     </div>
   </div>
 </div>
